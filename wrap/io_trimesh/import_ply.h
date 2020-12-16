@@ -159,7 +159,7 @@ public:
 		float k4;
 	};
 
-#define _VERTDESC_LAST_  32
+#define _VERTDESC_LAST_  64
 	static const  PropDescriptor &VertDesc(int i)
 	{
 		static const PropDescriptor pv[_VERTDESC_LAST_]={
@@ -196,7 +196,40 @@ public:
 		    /*28*/ {"vertex", "ny",            ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,n) + 1*sizeof(ScalarType),0,0,0,0,0  ,0},
 		    /*29*/ {"vertex", "nz",            ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,n) + 2*sizeof(ScalarType),0,0,0,0,0  ,0},
 		    /*30*/ {"vertex", "radius",        ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,radius),0,0,0,0,0  ,0},
-		    /*31*/ {"vertex", "quality",       ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,q),0,0,0,0,0  ,0}
+		    /*31*/ {"vertex", "quality",       ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,q),0,0,0,0,0  ,0},
+                /*32*/ {"point", "x",             ply::T_FLOAT, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,p),0,0,0,0,0  ,0},
+                /*33*/ {"point", "y",             ply::T_FLOAT, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,p) + sizeof(ScalarType),0,0,0,0,0  ,0},
+                /*34*/ {"point", "z",             ply::T_FLOAT, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,p) + 2*sizeof(ScalarType),0,0,0,0,0  ,0},
+                /*35*/ {"point", "flags",         ply::T_INT,   ply::T_INT,           offsetof(LoadPly_VertAux<ScalarType>,flags),0,0,0,0,0  ,0},
+                /*36*/ {"point", "quality",       ply::T_FLOAT, PlyType<ScalarType>(),         offsetof(LoadPly_VertAux<ScalarType>,q),0,0,0,0,0  ,0},
+                /*37*/ {"point", "red",           ply::T_UCHAR, ply::T_UCHAR,         offsetof(LoadPly_VertAux<ScalarType>,r),0,0,0,0,0  ,0},
+                /*38*/ {"point", "green",         ply::T_UCHAR, ply::T_UCHAR,         offsetof(LoadPly_VertAux<ScalarType>,g),0,0,0,0,0  ,0},
+                /*39*/ { "point", "blue",         ply::T_UCHAR, ply::T_UCHAR,         offsetof(LoadPly_VertAux<ScalarType>,b),0,0,0,0,0  ,0},
+                /*40*/ { "point", "alpha",        ply::T_UCHAR, ply::T_UCHAR,         offsetof(LoadPly_VertAux<ScalarType>,a),0,0,0,0,0  ,0},
+                /*41*/ {"point", "diffuse_red",   ply::T_UCHAR, ply::T_UCHAR,         offsetof(LoadPly_VertAux<ScalarType>,r),0,0,0,0,0  ,0},
+                /*42*/ {"point", "diffuse_green", ply::T_UCHAR, ply::T_UCHAR,         offsetof(LoadPly_VertAux<ScalarType>,g),0,0,0,0,0  ,0},
+                /*43*/ {"point", "diffuse_blue",  ply::T_UCHAR, ply::T_UCHAR,         offsetof(LoadPly_VertAux<ScalarType>,b),0,0,0,0,0  ,0},
+                /*44*/ {"point", "diffuse_alpha", ply::T_UCHAR, ply::T_UCHAR,         offsetof(LoadPly_VertAux<ScalarType>,a),0,0,0,0,0  ,0},
+                /*45*/ {"point", "confidence",    ply::T_FLOAT, ply::T_FLOAT,         offsetof(LoadPly_VertAux<ScalarType>,q),0,0,0,0,0  ,0},
+                /*46*/ {"point", "nx",            ply::T_FLOAT, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,n)                       ,0,0,0,0,0  ,0},
+                /*47*/ {"point", "ny",            ply::T_FLOAT, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,n) + 1*sizeof(ScalarType),0,0,0,0,0  ,0},
+                /*48*/ {"point", "nz",            ply::T_FLOAT, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,n) + 2*sizeof(ScalarType),0,0,0,0,0  ,0},
+                /*49*/ {"point", "radius",        ply::T_FLOAT, ply::T_FLOAT,         offsetof(LoadPly_VertAux<ScalarType>,radius),0,0,0,0,0  ,0},
+                /*50*/ {"point", "texture_u",     ply::T_FLOAT, ply::T_FLOAT,         offsetof(LoadPly_VertAux<ScalarType>,u),0,0,0,0,0  ,0},
+                /*51*/ {"point", "texture_v",     ply::T_FLOAT, ply::T_FLOAT,         offsetof(LoadPly_VertAux<ScalarType>,v),0,0,0,0,0  ,0},
+                /*52*/ {"point", "texture_w",     ply::T_FLOAT, ply::T_FLOAT,         offsetof(LoadPly_VertAux<ScalarType>,w),0,0,0,0,0  ,0},
+                /*53*/ {"point", "intensity",     ply::T_FLOAT, ply::T_FLOAT,         offsetof(LoadPly_VertAux<ScalarType>,intensity),0,0,0,0,0  ,0},
+                /*54*/ {"point", "s",             ply::T_FLOAT, ply::T_FLOAT,         offsetof(LoadPly_VertAux<ScalarType>,u),0,0,0,0,0  ,0},
+                /*55*/ {"point", "t",             ply::T_FLOAT, ply::T_FLOAT,         offsetof(LoadPly_VertAux<ScalarType>,v),0,0,0,0,0  ,0},
+                // DOUBLE
+                /*56*/ {"point", "x",             ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,p),0,0,0,0,0  ,0},
+                /*57*/ {"point", "y",             ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,p) + sizeof(ScalarType)  ,0,0,0,0,0  ,0},
+                /*58*/ {"point", "z",             ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,p) + 2*sizeof(ScalarType),0,0,0,0,0  ,0},
+                /*59*/ {"point", "nx",            ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,n)                       ,0,0,0,0,0  ,0},
+                /*60*/ {"point", "ny",            ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,n) + 1*sizeof(ScalarType),0,0,0,0,0  ,0},
+                /*61*/ {"point", "nz",            ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,n) + 2*sizeof(ScalarType),0,0,0,0,0  ,0},
+                /*62*/ {"point", "radius",        ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,radius),0,0,0,0,0  ,0},
+                /*63*/ {"point", "quality",       ply::T_DOUBLE, PlyType<ScalarType>(),offsetof(LoadPly_VertAux<ScalarType>,q),0,0,0,0,0  ,0}
 		};
 		return pv[i];
 	}
@@ -432,10 +465,11 @@ public:
 			if(found) pi.mask |= Mask::IOM_CAMERA;
 		}
 
+
 		// Standard data desciptors (vertex coord and faces)
-		if( pf.AddToRead(VertDesc(0))==-1 && pf.AddToRead(VertDesc(24)) ) { pi.status = PlyInfo::E_NO_VERTEX; return pi.status; }
-		if( pf.AddToRead(VertDesc(1))==-1 && pf.AddToRead(VertDesc(25)) ) { pi.status = PlyInfo::E_NO_VERTEX; return pi.status; }
-		if( pf.AddToRead(VertDesc(2))==-1 && pf.AddToRead(VertDesc(26)) ) { pi.status = PlyInfo::E_NO_VERTEX; return pi.status; }
+		if( (pf.AddToRead(VertDesc(0))==-1 && pf.AddToRead(VertDesc(24))) && (pf.AddToRead(VertDesc(32))==-1 && pf.AddToRead(VertDesc(56))) ) { pi.status = PlyInfo::E_NO_VERTEX; return pi.status; }
+		if( (pf.AddToRead(VertDesc(1))==-1 && pf.AddToRead(VertDesc(25))) && (pf.AddToRead(VertDesc(33))==-1 && pf.AddToRead(VertDesc(57)))) { pi.status = PlyInfo::E_NO_VERTEX; return pi.status; }
+		if( (pf.AddToRead(VertDesc(2))==-1 && pf.AddToRead(VertDesc(26))) && (pf.AddToRead(VertDesc(34))==-1 && pf.AddToRead(VertDesc(58)))) { pi.status = PlyInfo::E_NO_VERTEX; return pi.status; }
 		if( pf.AddToRead(FaceDesc(0))==-1 ) // Se fallisce si prova anche la sintassi di rapidform con index al posto di indices
 		{
 			int ii;
@@ -451,30 +485,36 @@ public:
 					}
 
 		}
+
 		// Optional flag descriptors
 		if(pf.AddToRead(EdgeDesc(0) )!= -1 && pf.AddToRead(EdgeDesc(1)) != -1 )
 			pi.mask |= Mask::IOM_EDGEINDEX;
 
-		if(vcg::tri::HasPerVertexFlags(m) && pf.AddToRead(VertDesc(3))!=-1 )
+		if(vcg::tri::HasPerVertexFlags(m) && ((pf.AddToRead(VertDesc(3))!=-1) ||(pf.AddToRead(VertDesc(35))!=-1)  ) )
 			pi.mask |= Mask::IOM_VERTFLAGS;
 
 		if( vcg::tri::HasPerVertexNormal(m) )
 		{
 			if(		pf.AddToRead(VertDesc(14))!=-1  && pf.AddToRead(VertDesc(15))!=-1  && pf.AddToRead(VertDesc(16))!=-1 )
 				pi.mask |= Mask::IOM_VERTNORMAL;
-			else // try also for Normals stored with doubles
-				if(		pf.AddToRead(VertDesc(27))!=-1  && pf.AddToRead(VertDesc(28))!=-1  && pf.AddToRead(VertDesc(29))!=-1 )
+			else if(		pf.AddToRead(VertDesc(27))!=-1  && pf.AddToRead(VertDesc(28))!=-1  && pf.AddToRead(VertDesc(29))!=-1 )
 					pi.mask |= Mask::IOM_VERTNORMAL;
-
+            else if(		pf.AddToRead(VertDesc(46))!=-1  && pf.AddToRead(VertDesc(47))!=-1  && pf.AddToRead(VertDesc(48))!=-1 )
+                pi.mask |= Mask::IOM_VERTNORMAL;
+            else if(		pf.AddToRead(VertDesc(59))!=-1  && pf.AddToRead(VertDesc(60))!=-1  && pf.AddToRead(VertDesc(61))!=-1 )
+                pi.mask |= Mask::IOM_VERTNORMAL;
 		}
 
 		if( vcg::tri::HasPerVertexQuality(m) )
 		{
 			if( pf.AddToRead(VertDesc(4))!=-1 ||
-			    pf.AddToRead(VertDesc(13))!=-1 )
+			    pf.AddToRead(VertDesc(13))!=-1 ||
+                    pf.AddToRead(VertDesc(36))!=-1 ||
+                    pf.AddToRead(VertDesc(45))!=-1
+			    )
 				pi.mask |= Mask::IOM_VERTQUALITY;
 			else
-				if (pf.AddToRead(VertDesc(31))!=-1)
+				if (pf.AddToRead(VertDesc(31))!=-1 || pf.AddToRead(VertDesc(63))!=-1)
 					pi.mask |= Mask::IOM_VERTQUALITY;
 		}
 
@@ -487,6 +527,13 @@ public:
 				pf.AddToRead(VertDesc(8));
 				pi.mask |= Mask::IOM_VERTCOLOR;
 			}
+            if( pf.AddToRead(VertDesc(37))!=-1 )
+            {
+                pf.AddToRead(VertDesc(38));
+                pf.AddToRead(VertDesc(39));
+                pf.AddToRead(VertDesc(40));
+                pi.mask |= Mask::IOM_VERTCOLOR;
+            }
 			if( pf.AddToRead(VertDesc(9))!=-1 )
 			{
 				pf.AddToRead(VertDesc(10));
@@ -494,11 +541,23 @@ public:
 				pf.AddToRead(VertDesc(12));
 				pi.mask |= Mask::IOM_VERTCOLOR;
 			}
+            if( pf.AddToRead(VertDesc(41))!=-1 )
+            {
+                pf.AddToRead(VertDesc(42));
+                pf.AddToRead(VertDesc(43));
+                pf.AddToRead(VertDesc(44));
+                pi.mask |= Mask::IOM_VERTCOLOR;
+            }
 			if( pf.AddToRead(VertDesc(21))!=-1 )
 			{
 				hasIntensity = true;
 				pi.mask |= Mask::IOM_VERTCOLOR;
 			}
+            if( pf.AddToRead(VertDesc(53))!=-1 )
+            {
+                hasIntensity = true;
+                pi.mask |= Mask::IOM_VERTCOLOR;
+            }
 
 		}
 		if( tri::HasPerVertexTexCoord(m) )
@@ -511,6 +570,14 @@ public:
 			{
 				pi.mask |= Mask::IOM_VERTTEXCOORD;
 			}
+            if(( pf.AddToRead(VertDesc(54))!=-1 )&&  (pf.AddToRead(VertDesc(55))!=-1))
+            {
+                pi.mask |= Mask::IOM_VERTTEXCOORD;
+            }
+            if(( pf.AddToRead(VertDesc(50))!=-1 )&&  (pf.AddToRead(VertDesc(51))!=-1))
+            {
+                pi.mask |= Mask::IOM_VERTTEXCOORD;
+            }
 		}
 		if(tri::HasPerVertexRadius(m))
 		{
@@ -518,6 +585,10 @@ public:
 				pi.mask |= Mask::IOM_VERTRADIUS;
 			else if( pf.AddToRead(VertDesc(30))!=-1 )
 				pi.mask |= Mask::IOM_VERTRADIUS;
+            else if( pf.AddToRead(VertDesc(49))!=-1 )
+                pi.mask |= Mask::IOM_VERTRADIUS;
+            else if( pf.AddToRead(VertDesc(62))!=-1 )
+                pi.mask |= Mask::IOM_VERTRADIUS;
 		}
 		// se ci sono i flag per vertice ci devono essere anche i flag per faccia
 		if( pf.AddToRead(FaceDesc(1))!=-1 )
@@ -664,7 +735,7 @@ public:
 
 				}
 			}
-			else if( !strcmp( pf.ElemName(i),"vertex" ) )
+			else if( !strcmp( pf.ElemName(i),"vertex" ) || !strcmp( pf.ElemName(i),"point" ) )
 			{
 				int j;
 
