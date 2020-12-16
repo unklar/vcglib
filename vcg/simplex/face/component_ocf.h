@@ -370,7 +370,7 @@ public:
   std::vector<typename VALUE_TYPE::CurvatureDirType> CDV;
   std::vector<int> MV;
   std::vector<typename VALUE_TYPE::NormalType> NV;
-  std::vector<float> QV;
+  std::vector<typename VALUE_TYPE::QualityType> QV;
   std::vector<class WedgeColorTypePack> WCV;
   std::vector<class WedgeNormalTypePack> WNV;
   std::vector<class WedgeTexTypePack> WTV;
@@ -404,6 +404,11 @@ public:
   }
 
   char &VFi(const int j) {
+    assert((*this).Base().VFAdjacencyEnabled);
+    return (*this).Base().AV[(*this).Index()]._zp[j];
+  }
+
+  char VFi(const int j) const {
     assert((*this).Base().VFAdjacencyEnabled);
     return (*this).Base().AV[(*this).Index()]._zp[j];
   }

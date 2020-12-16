@@ -287,10 +287,12 @@ public:
 
 	static const PropDescriptor &EdgeDesc(int i)
 	{
-		static const PropDescriptor qf[2]=
+		static const PropDescriptor qf[4]=
 		{
-		    {"edge","vertex1", ply::T_INT,  ply::T_INT,  offsetof(LoadPly_EdgeAux,v1),		  0,0,0,0,0  ,0},
-		    {"edge","vertex2", ply::T_INT,  ply::T_INT,  offsetof(LoadPly_EdgeAux,v2),		  0,0,0,0,0  ,0},
+			{"edge","vertex1", ply::T_INT,  ply::T_INT,  offsetof(LoadPly_EdgeAux,v1),		  0,0,0,0,0  ,0},
+			{"edge","vertex2", ply::T_INT,  ply::T_INT,  offsetof(LoadPly_EdgeAux,v2),		  0,0,0,0,0  ,0},
+			{"edge","vertex1", ply::T_UINT, ply::T_INT,  offsetof(LoadPly_EdgeAux,v1),		  0,0,0,0,0  ,0},
+			{"edge","vertex2", ply::T_UINT, ply::T_INT,  offsetof(LoadPly_EdgeAux,v2),		  0,0,0,0,0  ,0},
 		};
 		return qf[i];
 	}
@@ -487,7 +489,8 @@ public:
 		}
 
 		// Optional flag descriptors
-		if(pf.AddToRead(EdgeDesc(0) )!= -1 && pf.AddToRead(EdgeDesc(1)) != -1 )
+		if((pf.AddToRead(EdgeDesc(0) )!= -1  || pf.AddToRead(EdgeDesc(2) )!= -1) && 
+			(pf.AddToRead(EdgeDesc(1)) != -1 || pf.AddToRead(EdgeDesc(3)) != -1))
 			pi.mask |= Mask::IOM_EDGEINDEX;
 
 		if(vcg::tri::HasPerVertexFlags(m) && ((pf.AddToRead(VertDesc(3))!=-1) ||(pf.AddToRead(VertDesc(35))!=-1)  ) )
